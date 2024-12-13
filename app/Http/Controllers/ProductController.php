@@ -65,7 +65,8 @@ class ProductController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="name", type="string", example="Produk Baru"),
      *             @OA\Property(property="description", type="string", example="Deskripsi produk"),
-     *             @OA\Property(property="price", type="number", format="float", example=10000)
+     *             @OA\Property(property="price", type="number", format="float", example=10000),
+     *             @OA\Property(property="stock", type="number", format="int", example=20)
      *         )
      *     ),
      *     @OA\Response(
@@ -80,6 +81,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0'
         ]);
 
         $product = Product::create($validated);
